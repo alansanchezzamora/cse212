@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 public static class Arrays
 {
     /// <summary>
@@ -13,7 +15,17 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+
+        //Plan: The starting position is the number in the parameters, the following positions are the result of multipling the number x the length
+        //Example MulitplesOf(4,4) -> 4x1=4, 4x2=8, 4x3=12, 4x4=16
+        //I'll start with the length number and decrease it by 1 and at the end I'll sort it 
+        List<double> multiples = new();
+        for (var i = 1; i <= length; i++)
+        {
+            var x = number * i;
+            multiples.Add(x);
+        }
+        return multiples.ToArray();
     }
 
     /// <summary>
@@ -23,11 +35,27 @@ public static class Arrays
     ///
     /// Because a list is dynamic, this function will modify the existing data list rather than returning a new list.
     /// </summary>
+
     public static void RotateListRight(List<int> data, int amount)
     {
+        // Ensure the amount is within the range of the list length
+        amount = amount % data.Count;
         // TODO Problem 2 Start
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //PLAN
+        ////////////
+        ///Ill use the GetRange function
+        ///I'll split the data in 2 different ranges, the first range will start in the data.Count- amount position and will include the #amount elements.
+        ///The second range will start in the 0 position and go up to the data.Count-amount position.
+        ///In order to not duplicate the elements in the data we need to clear it. 
+        ///and then add the two ranges we created. 
+        List<int> firstRange = data.GetRange(data.Count - amount, amount);
+        List<int> secondRange = data.GetRange(0, data.Count - amount);
+        data.Clear();
+        data.AddRange(firstRange);
+        data.AddRange(secondRange);
     }
 }
