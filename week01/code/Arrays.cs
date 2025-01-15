@@ -18,7 +18,11 @@ public static class Arrays
 
         //Plan: The starting position is the number in the parameters, the following positions are the result of multipling the number x the length
         //Example MulitplesOf(4,4) -> 4x1=4, 4x2=8, 4x3=12, 4x4=16
-        //I'll start with the length number and decrease it by 1 and at the end I'll sort it 
+        //I'll start with the length number and decrease it by 1 and at the end I'll sort it
+        //I need to create a new list to hold the multiples array
+        // I need to create a loop that goes from i=1 to i<= length. It's important it stops when i greater or equal. It will stop when it's equal. 
+        // I'll create an x variable that multiplies the number parameter times i, the value in the loop. 
+        // I'll add the x var to the multiples List
         List<double> multiples = new();
         for (var i = 1; i <= length; i++)
         {
